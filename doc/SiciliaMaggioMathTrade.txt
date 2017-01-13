@@ -1,0 +1,200 @@
+# These WANTS loaded directly by the OLWLG
+# Sat May 28 00:41:03 2016
+#+ Geeklist: NO-SHIP Math Trade Sicilia Maggio 2016
+#+ ... http://www.boardgamegeek.com/geeklist/208839
+#+ Owner: ifreddy
+#+ Item count: 61
+#+ Users with items: 9
+
+#! ALLOW-DUMMIES
+#! REQUIRE-COLONS
+#! REQUIRE-USERNAMES
+#! HIDE-NONTRADES
+#! SHOW-ELAPSED-TIME
+#! ITERATIONS=500
+#! SEED=7937
+# #! METRIC=USER-TRADING
+
+# MISSING 20 WANTS (32.7%) FROM 3 USER(s) (33.3%):
+# blackwood87 (8)
+# koby (7)
+# massimiliano_cuccia (5)
+
+!BEGIN-OFFICIAL-NAMES
+# Summary generated: Mon May 23 16:41:29 2016, geeklist 208839, NO-SHIP Math Trade Sicilia Maggio 2016
+0001-SNOWD ==> "Snowdonia" (from massimiliano_cuccia)
+0002-RATTUS ==> "Rattus" (from massimiliano_cuccia)
+0003-GFS ==> "Ghost for Sale" (from massimiliano_cuccia)
+0004-MAGNI ==> "Magnifico" (from massimiliano_cuccia)
+0005-WARKNI ==> "Warrior Knights" (from ifreddy)
+0006-SUDMAN ==> "SuDoKu Mania" (from ifreddy)
+0007-LUNGA ==> "Lungarno" (from ifreddy)
+0008-SOSSE ==> "S?, Oscuro Signore! (Seconda edizione)" (from ifreddy)
+0009-JERUS ==> "Jerusalem" (from massimiliano_cuccia)
+0010-WT ==> "Warriors & Traders" (from ifreddy)
+0011-TABOO ==> "Taboo" (from ifreddy)
+0012-CV ==> "CV" (from koby)
+0013-DEADW ==> "Deadwood" (from koby)
+0014-SAMSWO ==> "Samurai Sword" (from koby)
+0015-ELYSI ==> "Elysium" (from koby)
+0016-RISK ==> "Risk" (from koby)
+0017-SJUAN ==> "San Juan" (from koby)
+0018-DISCO ==> "Discoveries" (from koby)
+0019-COMIX ==> "Co-Mix" (from elflum)
+0020-MINOS ==> "Minos" (from elflum)
+0021-METRO ==> "Metro" (from elflum)
+0022-CLOUT ==> "Clout Fantasy" (from elflum)
+0023-COTBD ==> "The Curse of the Black Dice" (from elflum)
+0024-KEYLAR ==> "Key Largo" (from elflum)
+0025-DICTOW ==> "Dice Town" (from elflum)
+0026-MAHAR ==> "Maharani" (from elflum)
+0027-ASOO ==> "Anima: Shadow of Omega" (from elflum)
+0028-FREDE ==> "Fredericus" (from elflum)
+0029-TUCHU ==> "Tuchulcha" (from elflum)
+0030-LOOLON ==> "Looting London" (from elflum)
+0031-GREDAL ==> "The Great Dalmuti" (from elflum)
+0032-TED ==> "Tiny Epic Defenders" (from elflum)
+0033-WT ==> "Warriors & Traders" (from sciacca77)
+0034-SOSSE ==> "S?, Oscuro Signore! (Seconda edizione)" (from sciacca77)
+0035-BANG ==> "BANG!" (from sciacca77)
+0036-JERUS ==> "Jerusalem" (from sciacca77)
+0037-SYDJNMX ==> "Scotland Yard: Die Jagd nach Mister X" (from sciacca77)
+0038-KHAN ==> "Khan" (from sciacca77)
+0039-STRROM ==> "Strada Romana" (from sciacca77)
+0040-ATTOC ==> "The Adventurers: The Temple of Chac" (from sciacca77)
+0041-KADP2 ==> "Krosmaster: Arena – Duel Pack 2" (from elflum)
+0042-SUSDIC ==> "Sushi Dice" (from elflum)
+0043-HIGCLA ==> "Highland Clans" (from asmo77)
+0044-ROBKNI ==> "Robber Knights" (from asmo77)
+0045-TONGI ==> "Tongiaki" (from asmo77)
+0046-ANLWOGWWOWW ==> "Alt Name: LOTTO WINGS OF GLORY WWI / WINGS OF WAR WWI" (from asmo77)
+0047-TEK ==> "Tiny Epic Kingdoms" (from asmo77)
+0048-GOTTCG ==> "A Game of Thrones: The Card Game" (from asmo77)
+0049-GDTG ==> "Giro d'Italia: The Game" (from asmo77)
+0050-MOODX ==> "Mood X" (from blackwood87)
+0051-SYARD ==> "Scotland Yard" (from blackwood87)
+0052-MARTI ==> "Martinique" (from blackwood87)
+0053-SUBDI ==> "Subdivision" (from blackwood87)
+0054-DAKOTA ==> "Dakota" (from blackwood87)
+0055-GOTA ==> "The Gardens of the Alhambra" (from blackwood87)
+0056-MAGIN ==> "Maginor" (from blackwood87)
+0057-YGGDR ==> "Yggdrasil" (from blackwood87)
+0058-MAGES ==> "Magestorm" (from andrea90)
+0059-HOSBAT ==> "Hoshi Battle" (from andrea90)
+0060-ESBITU ==> "EverZone: Strategic Battles in the Universe" (from LOX8)
+0061-SKYLI ==> "Skyline" (from LOX8)
+
+!END-OFFICIAL-NAMES
+
+#pragma user "andrea90"
+# Confirmation code: Runh29XCXYIGrhHcGCT49A
+# Fri May 27 11:59:40 2016
+
+
+(andrea90) %Jerus : 0036-JERUS 0009-JERUS
+
+(andrea90) 0058-MAGES : 0048-GOTTCG 0015-ELYSI 0060-ESBITU 0023-COTBD %Jerus 0013-DEADW
+
+(andrea90) 0059-HOSBAT : 0048-GOTTCG 0015-ELYSI 0060-ESBITU 0023-COTBD %Jerus 0013-DEADW
+#pragma user "asmo77"
+# Confirmation code: CzIQ3JTUj7NiYYU5IZ/TFQ
+# Fri May 27 05:30:44 2016
+
+
+(asmo77) 0043-HIGCLA : 0015-ELYSI 0001-SNOWD 0002-RATTUS 0018-DISCO 0053-SUBDI
+
+(asmo77) 0044-ROBKNI : 0015-ELYSI 0001-SNOWD 0002-RATTUS 0018-DISCO 0053-SUBDI
+
+(asmo77) 0045-TONGI : 0015-ELYSI 0001-SNOWD 0002-RATTUS 0018-DISCO 0053-SUBDI
+
+(asmo77) 0046-ANLWOGWWOWW :
+
+(asmo77) 0047-TEK :
+
+(asmo77) 0048-GOTTCG :
+
+(asmo77) 0049-GDTG : 0015-ELYSI 0001-SNOWD 0002-RATTUS 0018-DISCO 0053-SUBDI
+#pragma user "elflum"
+# Confirmation code: 7x0wcfovV1-cV2f31m6S+Q
+# Tue May 24 08:02:41 2016
+
+
+(elflum) 0019-COMIX : 0015-ELYSI 0018-DISCO 0040-ATTOC 0060-ESBITU 0057-YGGDR 0002-RATTUS 0055-GOTA 0061-SKYLI 0047-TEK 0013-DEADW 0045-TONGI
+
+(elflum) 0020-MINOS : 0015-ELYSI 0018-DISCO 0040-ATTOC 0060-ESBITU 0057-YGGDR 0002-RATTUS 0055-GOTA 0061-SKYLI 0047-TEK 0013-DEADW 0045-TONGI
+
+(elflum) 0021-METRO : 0015-ELYSI 0018-DISCO 0040-ATTOC 0060-ESBITU 0057-YGGDR 0002-RATTUS 0055-GOTA 0061-SKYLI
+
+(elflum) 0022-CLOUT : 0015-ELYSI 0018-DISCO 0040-ATTOC 0060-ESBITU 0057-YGGDR 0002-RATTUS 0055-GOTA 0061-SKYLI 0047-TEK 0013-DEADW 0045-TONGI 0003-GFS
+
+(elflum) 0023-COTBD : 0015-ELYSI 0018-DISCO 0040-ATTOC 0060-ESBITU
+
+(elflum) 0024-KEYLAR : 0015-ELYSI 0018-DISCO 0040-ATTOC 0060-ESBITU 0057-YGGDR 0002-RATTUS 0055-GOTA 0061-SKYLI
+
+(elflum) 0025-DICTOW : 0015-ELYSI 0018-DISCO 0040-ATTOC 0060-ESBITU
+
+(elflum) 0026-MAHAR : 0015-ELYSI 0018-DISCO 0040-ATTOC 0060-ESBITU
+
+(elflum) 0027-ASOO : 0015-ELYSI 0018-DISCO 0040-ATTOC 0060-ESBITU 0057-YGGDR 0002-RATTUS 0055-GOTA 0061-SKYLI 0047-TEK 0013-DEADW 0045-TONGI 0003-GFS
+
+(elflum) 0028-FREDE : 0015-ELYSI 0018-DISCO 0040-ATTOC 0060-ESBITU 0057-YGGDR 0002-RATTUS 0055-GOTA 0061-SKYLI 0047-TEK 0013-DEADW 0045-TONGI 0003-GFS
+
+(elflum) 0029-TUCHU : 0015-ELYSI 0018-DISCO 0040-ATTOC 0060-ESBITU 0057-YGGDR 0002-RATTUS 0055-GOTA 0061-SKYLI 0047-TEK 0013-DEADW 0045-TONGI 0003-GFS
+
+(elflum) 0030-LOOLON : 0015-ELYSI 0018-DISCO 0040-ATTOC 0060-ESBITU 0057-YGGDR 0002-RATTUS 0055-GOTA 0061-SKYLI 0047-TEK 0013-DEADW 0045-TONGI 0003-GFS
+
+(elflum) 0031-GREDAL : 0015-ELYSI 0018-DISCO 0040-ATTOC 0060-ESBITU 0057-YGGDR 0002-RATTUS 0055-GOTA 0061-SKYLI 0047-TEK 0013-DEADW 0045-TONGI
+
+(elflum) 0032-TED : 0015-ELYSI 0018-DISCO 0040-ATTOC 0060-ESBITU 0057-YGGDR 0002-RATTUS 0055-GOTA 0061-SKYLI 0047-TEK 0013-DEADW
+
+(elflum) 0041-KADP2 : 0015-ELYSI 0018-DISCO 0040-ATTOC 0060-ESBITU 0057-YGGDR 0002-RATTUS 0055-GOTA 0061-SKYLI 0047-TEK 0013-DEADW
+
+(elflum) 0042-SUSDIC : 0015-ELYSI 0018-DISCO 0040-ATTOC 0060-ESBITU 0057-YGGDR 0002-RATTUS 0055-GOTA 0061-SKYLI 0047-TEK 0013-DEADW
+#pragma user "ifreddy"
+# Confirmation code: li8fzScJ2LyonjlUqmf0nA
+# Tue May 24 14:01:28 2016
+
+
+(ifreddy) 0005-WARKNI : 0015-ELYSI 0001-SNOWD 0013-DEADW 0054-DAKOTA
+
+(ifreddy) 0006-SUDMAN : 0015-ELYSI 0001-SNOWD 0013-DEADW 0054-DAKOTA 0014-SAMSWO 0023-COTBD 0039-STRROM
+
+(ifreddy) 0007-LUNGA : 0015-ELYSI 0001-SNOWD 0013-DEADW 0054-DAKOTA 0014-SAMSWO 0023-COTBD 0039-STRROM
+
+(ifreddy) 0008-SOSSE : 0015-ELYSI 0001-SNOWD 0013-DEADW 0054-DAKOTA 0014-SAMSWO 0023-COTBD 0039-STRROM
+
+(ifreddy) 0010-WT : 0015-ELYSI 0001-SNOWD 0013-DEADW 0054-DAKOTA
+
+(ifreddy) 0011-TABOO : 0015-ELYSI 0001-SNOWD 0013-DEADW 0054-DAKOTA 0014-SAMSWO 0023-COTBD 0039-STRROM
+#pragma user "LOX8"
+# Confirmation code: iTctWcxpIb9CA6s19okJkQ
+# Tue May 24 20:36:01 2016
+
+
+(LOX8) 0060-ESBITU : 0020-MINOS
+
+(LOX8) 0061-SKYLI : 0027-ASOO
+#pragma user "sciacca77"
+# Confirmation code: pWqWu1U-qgFLGPVe7UyvwA
+# Fri May 27 14:18:22 2016
+
+
+(sciacca77) 0033-WT :
+
+(sciacca77) 0034-SOSSE : 0018-DISCO 0055-GOTA 0053-SUBDI 0013-DEADW 0026-MAHAR 0012-CV 0047-TEK 0021-METRO 0004-MAGNI 0049-GDTG 0020-MINOS 0023-COTBD 0007-LUNGA
+
+(sciacca77) 0035-BANG : 0018-DISCO 0055-GOTA 0053-SUBDI
+
+(sciacca77) 0036-JERUS : 0018-DISCO 0055-GOTA 0053-SUBDI 0013-DEADW
+
+(sciacca77) 0037-SYDJNMX : 0018-DISCO 0055-GOTA 0053-SUBDI 0013-DEADW
+
+(sciacca77) 0038-KHAN : 0018-DISCO
+
+(sciacca77) 0039-STRROM : 0018-DISCO
+
+(sciacca77) 0040-ATTOC :
+# End of wants. If you don't see this line then this file may have
+# been truncated.  IMPORTANT: this comment block is also required to be
+# in the wants file when you upload the WANTS into the OLWLG.
+
