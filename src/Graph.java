@@ -145,17 +145,18 @@ public class Graph {
             for (Edge e : v.EDGES) {
 //                System.out.println("Comparing e.sender.name (" + e.sender.name + ") to e.receiver.twin.name (" + e.sender.twin.name + ")");
 //                if (e.sender == e.receiver.twin) { System.out.println("They're the same!"); }
-                // if (e.sender != e.receiver.twin)
+                if (e.sender != e.receiver.twin)
                 // if (!(e.sender.equals(e.receiver.twin)))
-                if (!(v.name.equals(e.sender.name)))
+                // if (!(v.name.equals(e.sender.name)))
                     System.out.print(" " + e.sender.name);
             }
             System.out.println();
         }
     }
 
-    void generateIntegerProgrammingEquations() {
-        System.out.println("generateIntegerProgrammingEquations()");
+    // DEPRECATED
+    void generateIntegerProgrammingEquations_old() {
+        System.out.println("generateIntegerProgrammingEquations_old()");
         assert frozen;
         for (Vertex v : RECEIVERS) {
             System.out.print("C" + String.format("%03d", v.id) + " : ");
@@ -166,6 +167,91 @@ public class Graph {
             }
             System.out.println("= 0");
         }
+    }
+
+    void generateIntegerProgrammingEquations() {
+        System.out.println("generateIntegerProgrammingEquations()");
+
+        Map<String, Set> variablesEqualToZero = new TreeMap<String, Set>();
+        Set<String> ipEdges = new TreeSet<>();
+        assert frozen;
+        for (Vertex v : RECEIVERS) {
+            System.out.print(v.name + " :");
+            String outerId = v.name;
+            outerId = dropAppendedSender(outerId);
+            outerId = fourDigitId(outerId);
+            Set<String> outerTreeSet = variablesEqualToZero.get(outerId);
+            if (outerTreeSet == null) {
+                outerTreeSet = new TreeSet<>();
+                variablesEqualToZero.put(outerId, outerTreeSet);
+            }
+            for (Edge e : v.EDGES) {
+                if (e.sender != e.receiver.twin) {
+                    System.out.print(" " + e.sender.name);
+                    String innerId = e.sender.name;
+                    innerId = dropAppendedSender(innerId);
+                    innerId = fourDigitId(innerId);
+                    outerTreeSet.add("-x" + innerId + outerId);
+                    ipEdges.add("x" + innerId + outerId);
+                    Set<String> innerTreeSet = variablesEqualToZero.get(innerId);
+                    if (innerTreeSet == null) {
+                        innerTreeSet = new TreeSet<>();
+                        variablesEqualToZero.put(innerId, innerTreeSet);
+                    }
+                    innerTreeSet.add("+x" + innerId + outerId);
+                    ipEdges.add("x" + innerId + outerId);
+                }
+            }
+            System.out.println();
+        }
+        System.out.println("IP output:");
+        Iterator<String> lpEdgesIter = ipEdges.iterator();
+        System.out.print("max: ");
+        while (lpEdgesIter.hasNext()) {
+            String variable = lpEdgesIter.next();
+            System.out.print(variable);
+            if (lpEdgesIter.hasNext()) {
+                System.out.print("+");
+            }
+        }
+        System.out.println("\n");
+        Iterator<String> outerIter = variablesEqualToZero.keySet().iterator();
+        while (outerIter.hasNext()) {
+            String id = outerIter.next();
+            Set value = variablesEqualToZero.get(id);
+            System.out.print("C" + fourDigitId(id) + ": ");
+            Iterator<String> innerIter = value.iterator();
+            while (innerIter.hasNext()) {
+                String variable = innerIter.next();
+                System.out.print(variable);
+            }
+            System.out.println("=0");
+        }
+        System.out.println();
+        System.out.print("bin ");
+        lpEdgesIter = ipEdges.iterator();
+        while (lpEdgesIter.hasNext()) {
+            String variable = lpEdgesIter.next();
+            System.out.print(variable);
+            if (lpEdgesIter.hasNext()) {
+                System.out.print(",");
+            }
+        }
+        System.out.println();
+    }
+
+    private String fourDigitId(String id) {
+        if (id.indexOf("-") != -1) {
+            return id.substring(0, id.indexOf("-"));
+        }
+        return id;
+    }
+
+    private String dropAppendedSender(String id) {
+        if (id.indexOf(" sender") != -1) {
+            id = id.substring(0, id.indexOf(" sender"));
+        }
+        return id;
     }
 
     private int timestamp = 0;

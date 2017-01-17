@@ -46,7 +46,7 @@ public class TradeMaximizer {
     graph.removeImpossibleEdges();
 
     graph.print();
-    // graph.generateIntegerProgrammingEquations();
+    graph.generateIntegerProgrammingEquations();
 
 
     List<List<Graph.Vertex>> bestCycles = graph.findCycles();
@@ -124,6 +124,7 @@ public class TradeMaximizer {
   
   List<String[]> readWantLists() {
     try {
+      System.setIn(new FileInputStream("doc/SiciliaMaggioMathTrade.txt"));
       BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
       List<String[]> wantLists = new ArrayList<String[]>();
       boolean readingOfficialNames = false;
