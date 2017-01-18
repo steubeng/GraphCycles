@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.*;
 
 public class Graph {
@@ -169,11 +170,12 @@ public class Graph {
         }
     }
 
-    void generateIntegerProgrammingEquations() {
+    void generateIntegerProgrammingEquations(String filename) {
         System.out.println("generateIntegerProgrammingEquations()");
 
         Map<String, Set> variablesEqualToZero = new TreeMap<String, Set>();
-        Set<String> ipEdges = new TreeSet<>();
+        Map<String, Set> variablesLessThanOrEqualsToOne = new TreeMap<String, Set>();
+        Set<String> lpEdges = new TreeSet<>();
         assert frozen;
         for (Vertex v : RECEIVERS) {
             System.out.print(v.name + " :");
@@ -192,52 +194,109 @@ public class Graph {
                     innerId = dropAppendedSender(innerId);
                     innerId = fourDigitId(innerId);
                     outerTreeSet.add("-x" + innerId + outerId);
-                    ipEdges.add("x" + innerId + outerId);
+                    lpEdges.add("x" + innerId + outerId);
                     Set<String> innerTreeSet = variablesEqualToZero.get(innerId);
                     if (innerTreeSet == null) {
                         innerTreeSet = new TreeSet<>();
                         variablesEqualToZero.put(innerId, innerTreeSet);
                     }
                     innerTreeSet.add("+x" + innerId + outerId);
-                    ipEdges.add("x" + innerId + outerId);
+                    lpEdges.add("x" + innerId + outerId);
+                    Set<String> senders = variablesLessThanOrEqualsToOne.get(innerId);
+                    if (senders == null) {
+                        senders = new TreeSet<>();
+                        variablesLessThanOrEqualsToOne.put(innerId, senders);
+                    }
+                    senders.add(outerId);
                 }
             }
             System.out.println();
         }
-        System.out.println("IP output:");
-        Iterator<String> lpEdgesIter = ipEdges.iterator();
-        System.out.print("max: ");
+        System.out.println("LP output:");
+        StringBuffer buf = new StringBuffer();
+        Iterator<String> lpEdgesIter = lpEdges.iterator();
+        // System.out.print("max: ");
+        buf.append("max: ");
         while (lpEdgesIter.hasNext()) {
             String variable = lpEdgesIter.next();
-            System.out.print(variable);
+            // System.out.print(variable);
+            buf.append(variable);
             if (lpEdgesIter.hasNext()) {
-                System.out.print("+");
+                // System.out.print("+");
+                buf.append("+");
             }
         }
-        System.out.println("\n");
+        // System.out.println(";\n");
+        buf.append(";\n\n");
         Iterator<String> outerIter = variablesEqualToZero.keySet().iterator();
         while (outerIter.hasNext()) {
             String id = outerIter.next();
             Set value = variablesEqualToZero.get(id);
-            System.out.print("C" + fourDigitId(id) + ": ");
             Iterator<String> innerIter = value.iterator();
+            Iterator<String> firstPosition = value.iterator();
+            String firstElement = "";
+            if (firstPosition.hasNext()) {
+                firstElement = firstPosition.next();
+            }
             while (innerIter.hasNext()) {
                 String variable = innerIter.next();
-                System.out.print(variable);
+                if ((firstElement.equals(variable)) && (variable.startsWith("+"))) {
+                    // System.out.print(variable.substring(1));
+                    buf.append(variable.substring(1));
+                } else {
+                    // System.out.print(variable);
+                    buf.append(variable);
+                }
             }
-            System.out.println("=0");
+            // System.out.println("=0;");
+            buf.append("=0;\n");
         }
-        System.out.println();
-        System.out.print("bin ");
-        lpEdgesIter = ipEdges.iterator();
+        // System.out.println();
+        buf.append("\n");
+        Iterator<String> outerSenderIter = variablesLessThanOrEqualsToOne.keySet().iterator();
+        while (outerSenderIter.hasNext()) {
+            String outerKey = outerSenderIter.next();
+            Set<String> outerValue = variablesLessThanOrEqualsToOne.get(outerKey);
+            Iterator<String> innerSenderIter = outerValue.iterator();
+            while (innerSenderIter.hasNext()) {
+                String innerKey = innerSenderIter.next();
+                // System.out.print("x" + outerKey + innerKey);
+                buf.append("x" + outerKey + innerKey);
+                if (innerSenderIter.hasNext()) {
+                    // System.out.print("+");
+                    buf.append("+");
+                }
+            }
+            // System.out.println("<=1;");
+            buf.append("<=1;\n");
+        }
+        // System.out.print("\nbin ");
+        buf.append("\nbin ");
+        lpEdgesIter = lpEdges.iterator();
         while (lpEdgesIter.hasNext()) {
             String variable = lpEdgesIter.next();
-            System.out.print(variable);
+            // System.out.print(variable);
+            buf.append(variable);
             if (lpEdgesIter.hasNext()) {
-                System.out.print(",");
+                // System.out.print(",");
+                buf.append(",");
             }
         }
-        System.out.println();
+        // System.out.println(";");
+        buf.append(";");
+        System.out.println(buf.toString());
+
+        Writer writer = null;
+        try {
+            writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filename), "utf-8"));
+            writer.write(buf.toString());
+        } catch (IOException ex) {
+            // report error
+        } finally {
+            try {
+                writer.close();
+            } catch (Exception ex) {/*ignore*/}
+        }
     }
 
     private String fourDigitId(String id) {

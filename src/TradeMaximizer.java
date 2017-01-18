@@ -46,7 +46,7 @@ public class TradeMaximizer {
     graph.removeImpossibleEdges();
 
     graph.print();
-    graph.generateIntegerProgrammingEquations();
+    graph.generateIntegerProgrammingEquations("lpOutputFile.lp");
 
 
     List<List<Graph.Vertex>> bestCycles = graph.findCycles();

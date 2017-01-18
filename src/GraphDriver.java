@@ -19,7 +19,7 @@ public class GraphDriver {
 
         graph.print();
 
-        graph.generateIntegerProgrammingEquations();
+        graph.generateIntegerProgrammingEquations("dummyOutput.lp");
 
         /*
         // couple of different way to get either receiver or sender vertices
