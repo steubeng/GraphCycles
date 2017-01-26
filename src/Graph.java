@@ -175,6 +175,7 @@ public class Graph {
 
         Map<String, Set> variablesEqualToZero = new TreeMap<String, Set>();
         Map<String, Set> variablesLessThanOrEqualsToOne = new TreeMap<String, Set>();
+        Map<String, String> idToOriginalNameMap = new TreeMap<>();
         Set<String> lpEdges = new TreeSet<>();
         assert frozen;
         for (Vertex v : RECEIVERS) {
@@ -182,6 +183,7 @@ public class Graph {
             String outerId = v.name;
             outerId = dropAppendedSender(outerId);
             outerId = fourDigitId(outerId);
+            idToOriginalNameMap.put(outerId, dropAppendedSender(v.name));
             Set<String> outerTreeSet = variablesEqualToZero.get(outerId);
             if (outerTreeSet == null) {
                 outerTreeSet = new TreeSet<>();
@@ -193,6 +195,7 @@ public class Graph {
                     String innerId = e.sender.name;
                     innerId = dropAppendedSender(innerId);
                     innerId = fourDigitId(innerId);
+                    idToOriginalNameMap.put(innerId, dropAppendedSender(e.sender.name));
                     outerTreeSet.add("-x" + innerId + outerId);
                     lpEdges.add("x" + innerId + outerId);
                     Set<String> innerTreeSet = variablesEqualToZero.get(innerId);
@@ -285,6 +288,15 @@ public class Graph {
         // System.out.println(";");
         buf.append(";");
         System.out.println(buf.toString());
+
+        // Display idToOriginalNameMap
+        System.out.println("idToOriginalNameMap:");
+        Iterator<String> idToOriginalNameMapIter = idToOriginalNameMap.keySet().iterator();
+        while (idToOriginalNameMapIter.hasNext()) {
+            String id = idToOriginalNameMapIter.next();
+            String value = idToOriginalNameMap.get(id);
+            System.out.println("\t" + id + " --> " + value);
+        }
 
         Writer writer = null;
         try {
