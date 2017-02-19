@@ -174,7 +174,7 @@ public class Graph {
         System.out.println("generateIntegerProgrammingEquations()");
 
         Map<String, Set> variablesEqualToZero = new TreeMap<String, Set>();
-        Map<String, Set> variablesLessThanOrEqualsToOne = new TreeMap<String, Set>();
+        Map<String, Set> variablesLessThanOrEqualToNumberOfCopies = new TreeMap<String, Set>();
         Map<String, String> idToOriginalNameMap = new TreeMap<>();
         Set<String> lpEdges = new TreeSet<>();
         assert frozen;
@@ -205,17 +205,17 @@ public class Graph {
                     }
                     innerTreeSet.add("+x" + innerId + outerId);
                     lpEdges.add("x" + innerId + outerId);
-                    Set<String> senders = variablesLessThanOrEqualsToOne.get(innerId);
+                    Set<String> senders = variablesLessThanOrEqualToNumberOfCopies.get(innerId);
                     if (senders == null) {
                         senders = new TreeSet<>();
-                        variablesLessThanOrEqualsToOne.put(innerId, senders);
+                        variablesLessThanOrEqualToNumberOfCopies.put(innerId, senders);
                     }
                     senders.add(outerId);
                 }
             }
             System.out.println();
         }
-        System.out.println("LP output:");
+        // System.out.println("LP output:");
         StringBuffer buf = new StringBuffer();
         Iterator<String> lpEdgesIter = lpEdges.iterator();
         // System.out.print("max: ");
@@ -223,7 +223,7 @@ public class Graph {
         while (lpEdgesIter.hasNext()) {
             String variable = lpEdgesIter.next();
             // System.out.print(variable);
-            buf.append(variable);
+            buf.append(removeLeadingPercentSignFromWord(variable));
             if (lpEdgesIter.hasNext()) {
                 // System.out.print("+");
                 buf.append("+");
@@ -245,10 +245,10 @@ public class Graph {
                 String variable = innerIter.next();
                 if ((firstElement.equals(variable)) && (variable.startsWith("+"))) {
                     // System.out.print(variable.substring(1));
-                    buf.append(variable.substring(1));
+                    buf.append(removeLeadingPercentSignFromWord(variable.substring(1)));
                 } else {
                     // System.out.print(variable);
-                    buf.append(variable);
+                    buf.append(removeLeadingPercentSignFromWord(variable));
                 }
             }
             // System.out.println("=0;");
@@ -256,30 +256,40 @@ public class Graph {
         }
         // System.out.println();
         buf.append("\n");
-        Iterator<String> outerSenderIter = variablesLessThanOrEqualsToOne.keySet().iterator();
+        Iterator<String> outerSenderIter = variablesLessThanOrEqualToNumberOfCopies.keySet().iterator();
         while (outerSenderIter.hasNext()) {
+            boolean isaCopy = false;
             String outerKey = outerSenderIter.next();
-            Set<String> outerValue = variablesLessThanOrEqualsToOne.get(outerKey);
+            if ((outerKey.startsWith("%")) && (outerKey.substring(1, 5).matches("\\d\\d\\d\\d"))) {
+                // System.err.println("outerKey: " + outerKey + ", this is a copy");
+                isaCopy = true;
+            }
+            Set<String> outerValue = variablesLessThanOrEqualToNumberOfCopies.get(outerKey);
             Iterator<String> innerSenderIter = outerValue.iterator();
+            int copyCount = 0;
             while (innerSenderIter.hasNext()) {
+                if (isaCopy) {
+                    copyCount++;
+                }
                 String innerKey = innerSenderIter.next();
                 // System.out.print("x" + outerKey + innerKey);
-                buf.append("x" + outerKey + innerKey);
+                buf.append("x" + removeLeadingPercentSignFromWord(outerKey) + removeLeadingPercentSignFromWord(innerKey));
                 if (innerSenderIter.hasNext()) {
                     // System.out.print("+");
                     buf.append("+");
                 }
             }
-            // System.out.println("<=1;");
-            buf.append("<=1;\n");
+            // System.out.println("<=" + (isaCopy ? copyCount : 1) + ";\n");
+            buf.append("<=" + (isaCopy ? copyCount : 1) + ";\n");
         }
+
         // System.out.print("\nbin ");
         buf.append("\nbin ");
         lpEdgesIter = lpEdges.iterator();
         while (lpEdgesIter.hasNext()) {
             String variable = lpEdgesIter.next();
             // System.out.print(variable);
-            buf.append(variable);
+            buf.append(removeLeadingPercentSignFromWord(variable));
             if (lpEdgesIter.hasNext()) {
                 // System.out.print(",");
                 buf.append(",");
@@ -309,6 +319,16 @@ public class Graph {
                 writer.close();
             } catch (Exception ex) {/*ignore*/}
         }
+    }
+
+    private String removeLeadingPercentSignFromWord(String word) {
+        if (word.startsWith("%")) {
+            String tail = word.substring(1);
+            if (!(tail.matches("\\d+"))) { // if the tail is not a sequence of digits
+                return tail; // this is the "word" talk without the leading "%" sign
+            }
+        }
+        return word; // this is the unchanged original value passed in.  It either did not start with a "%" sign or it did but was not followed by a word.
     }
 
     private String fourDigitId(String id) {

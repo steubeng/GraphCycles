@@ -124,7 +124,8 @@ public class TradeMaximizer {
   
   List<String[]> readWantLists() {
     try {
-      System.setIn(new FileInputStream("doc/SiciliaMaggioMathTrade.txt"));
+      // System.setIn(new FileInputStream("doc/SiciliaMaggioMathTrade.txt"));
+      System.setIn(new FileInputStream("doc/israeliautumnmathtrade2016.txt"));
       BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
       List<String[]> wantLists = new ArrayList<String[]>();
       boolean readingOfficialNames = false;
